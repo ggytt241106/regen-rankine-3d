@@ -1,0 +1,349 @@
+/* ============================================================
+   全局样式 — 暗色专业主题 (对标朗肯循环视觉标准)
+   色板: 深蓝黑底 + 柔和灰白文字 + 冰蓝强调色
+   ============================================================ */
+
+/* ---- 设计令牌 ---- */
+:root {
+  --bg-root: #09090c;
+  --bg-section: #0c0c10;
+  --bg-elevated: #121218;
+  --bg-surface: #16161e;
+  --border-default: #1e1e28;
+  --border-subtle: #1a1a22;
+  --text-primary: #d8d8e0;
+  --text-secondary: #9a9aa8;
+  --text-muted: #5e5e6e;
+  --accent: #5b8def;
+  --accent-glow: rgba(91, 141, 239, 0.25);
+  --danger: #e0556a;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.25s ease;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  font-family: 'Segoe UI', 'Inter', 'Microsoft YaHei', 'PingFang SC', system-ui, sans-serif;
+  background: var(--bg-root);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========== 主布局: 垂直流 ========== */
+.layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+}
+
+/* ---- 3D发动机区 ---- */
+.section-3d {
+  position: relative;
+  width: 100%;
+  height: 52vh;
+  min-height: 340px;
+  background: #060608;
+  border-bottom: 1px solid var(--border-default);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.canvas-container {
+  width: 100%;
+  height: 100%;
+}
+
+.canvas-container canvas { display: block; }
+
+.view-toggle-float {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  z-index: 20;
+}
+
+/* ---- 左侧参数面板 (固定悬浮) ---- */
+.aside-sliders {
+  position: fixed;
+  left: 14px;
+  top: 14px;
+  z-index: 30;
+  max-height: calc(100vh - 28px);
+  overflow-y: auto;
+}
+
+/* ---- 图表区 ---- */
+.section-charts {
+  display: flex;
+  gap: 20px;
+  padding: 18px 20px;
+  width: 100%;
+  background: var(--bg-root);
+  flex-shrink: 0;
+}
+
+.chart-block {
+  flex: 1;
+  min-height: 340px;
+  height: 40vh;
+  background: var(--bg-section);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* ---- 第一行：静态热力参数说明 ---- */
+.section-desc {
+  padding: 16px 24px;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border-default);
+  flex-shrink: 0;
+  min-height: 180px;
+  contain: layout style;
+}
+
+.desc-text {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 1100px;
+  margin: 0 auto;
+  letter-spacing: 0.01em;
+}
+
+.desc-text strong { color: var(--text-primary); }
+
+/* ---- 第二行：实时动态工况数据 ---- */
+.section-dynamic {
+  padding: 8px 24px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  contain: layout style;
+}
+
+.dynamic-text {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+.dynamic-text b {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+}
+
+/* ---- 底部控制栏 ---- */
+.section-controls {
+  padding: 12px 24px;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border-default);
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ========== 参数面板 (玻璃拟态) ========== */
+.param-panel {
+  background: rgba(18, 18, 26, 0.88);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  max-width: 240px;
+}
+
+.param-panel__title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-align: center;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.param-item {
+  margin-bottom: 14px;
+}
+
+.param-item__header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11.5px;
+  margin-bottom: 4px;
+  color: var(--text-secondary);
+}
+
+.param-item__value {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.param-item__slider {
+  width: 100%;
+  height: 5px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.param-item__slider:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.param-item__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 2px solid #1a1a2e;
+  box-shadow: 0 0 10px var(--accent-glow), 0 2px 6px rgba(0, 0, 0, 0.5);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.param-item__slider::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 16px var(--accent-glow), 0 2px 8px rgba(0, 0, 0, 0.6);
+  transform: scale(1.1);
+}
+
+.param-item__slider::-webkit-slider-thumb:active {
+  transform: scale(1.05);
+}
+
+.param-item__range {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.param-panel__actions {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* ========== 按钮 ========== */
+.btn--dark {
+  padding: 8px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: inherit;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(6px);
+}
+
+.btn--dark:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.btn--dark:active {
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(0.97);
+}
+
+.btn--icon {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  border-radius: var(--radius-md);
+}
+
+/* ========== 控制栏 ========== */
+.control-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.control-bar__phase {
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.control-bar__info {
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.control-bar__hint {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ========== 滚动条 ========== */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+
+/* ========== 响应式 ========== */
+@media (max-width: 768px) {
+  .section-charts {
+    flex-direction: column;
+  }
+  .chart-block {
+    min-height: 280px;
+    height: 35vh;
+  }
+  .aside-sliders {
+    left: 4px;
+    top: 4px;
+  }
+  .param-panel {
+    max-width: 200px;
+    padding: 12px;
+  }
+  .section-desc {
+    min-height: 240px;
+  }
+}
