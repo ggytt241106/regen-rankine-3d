@@ -4,7 +4,7 @@
 
 ## 在线演示
 
-[https://1844514356zjc-dev.github.io/regen-rankine-3d/](https://1844514356zjc-dev.github.io/regen-rankine-3d/)
+https://ggytt241106.github.io/regen-rankine-3d/
 
 ## 功能特性
 
