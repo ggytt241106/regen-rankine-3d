@@ -2,7 +2,7 @@
 // 奥托定容理想循环 — 热力学计算模块
 //   1→2 等熵压缩  2→3 等容加热  3→4 等熵膨胀  4→1 等容放热
 // ============================================================
-import type { OttoParams, OttoCycleResult } from '../types';
+import type { OttoParams, OttoCycleResult } from '../../types';
 
 const R_GAS = 0.287;     // 空气气体常数 kJ/(kg·K)
 const Q_IN = 1250;        // 定容加热量 kJ/kg

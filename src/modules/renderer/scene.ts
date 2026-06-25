@@ -14,14 +14,12 @@ import { computeOttoCycle, computeFluidState } from '../thermodynamics';
 
 // ---- 发动机几何参数 ----
 const CYL_SPACING = 2.2;          // 缸心距
-const CYL_RADIUS = 0.75;
 const CYL_HEIGHT = 2.4;
 const CYL_TOP = 1.5;
 const CYL_BOTTOM = CYL_TOP - CYL_HEIGHT;  // -0.9
 const CRANK_Y = -2.4;             // 曲轴中心Y
 const CRANK_R = 0.85;             // 曲柄半径
 const ROD_LEN = 2.2;              // 连杆长度
-const FIRING_ORDER = [0, 3, 1, 2]; // 1-3-4-2 点火顺序
 const CYL_ANGLE_OFFSETS = [0, Math.PI, 2 * Math.PI, 3 * Math.PI]; // 各缸曲轴相位差
 
 interface CylinderAssembly {

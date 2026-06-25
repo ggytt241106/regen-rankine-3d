@@ -123,7 +123,7 @@ export class ChartPanel {
       grid: { left: 64, right: 28, top: 54, bottom: 40 },
       xAxis: {
         name: '比容 V (m³/kg)',
-        nameLocation: 'center',
+        nameLocation: 'middle' as const,
         nameGap: 28,
         type: 'value',
         nameTextStyle: { color: TEXT_COLOR, fontSize: 12 },
@@ -134,7 +134,7 @@ export class ChartPanel {
       },
       yAxis: {
         name: '压强 P (kPa)',
-        nameLocation: 'center',
+        nameLocation: 'middle' as const,
         nameGap: 44,
         type: 'value',
         nameTextStyle: { color: TEXT_COLOR, fontSize: 12 },
@@ -228,7 +228,7 @@ export class ChartPanel {
       grid: { left: 64, right: 28, top: 54, bottom: 40 },
       xAxis: {
         name: '熵 S (kJ/(kg·K))',
-        nameLocation: 'center',
+        nameLocation: 'middle' as const,
         nameGap: 28,
         type: 'value',
         nameTextStyle: { color: TEXT_COLOR, fontSize: 12 },
@@ -239,7 +239,7 @@ export class ChartPanel {
       },
       yAxis: {
         name: '温度 T (K)',
-        nameLocation: 'center',
+        nameLocation: 'middle' as const,
         nameGap: 44,
         type: 'value',
         nameTextStyle: { color: TEXT_COLOR, fontSize: 12 },

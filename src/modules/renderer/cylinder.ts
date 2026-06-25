@@ -5,8 +5,6 @@ import * as THREE from 'three';
 
 const RADIUS = 0.75;
 const HEIGHT = 2.4;
-const TOP = 1.5;
-const BOTTOM = TOP - HEIGHT;
 const SEG = 48;
 
 export class CylinderBody {
